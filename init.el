@@ -28,16 +28,32 @@
 
     '((symbol . company)
      (is-external . true)
-     (hook . nil))
+     (hook . "company.el"))
+
+    '((symbol . which-key)
+     (is-external . true)
+     (hook . "which-key.el"))
     
     '((symbol . doom-themes)
      (is-external . true)
      (hook . "theme.el"))
 
+    '((symbol . flycheck)
+     (is-external . true)
+     (hook . nil))
+    
+    '((symbol . flycheck-pos-tip)
+     (is-external . true)
+     (hook . nil))
+
     ;;; Internal Modules
     '((symbol . cursor-movement)
      (is-external . false)
      (hook . "cursor-movement.el"))
+
+    '((symbol . interface)
+      (is-external . false)
+      (hook . "interface.el"))
   )
   "A list of alists corresponding to module installations."
 )
