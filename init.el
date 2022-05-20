@@ -37,7 +37,11 @@
     '((symbol . doom-themes)
      (is-external . true)
      (hook . "theme.el"))
-
+    
+    '((symbol . awesome-tab)
+     (is-external . true)
+     (hook . "tabs.el"))
+    
     '((symbol . flycheck)
      (is-external . true)
      (hook . nil))
@@ -45,7 +49,24 @@
     '((symbol . flycheck-pos-tip)
      (is-external . true)
      (hook . nil))
+    
+    '((symbol . treemacs)
+     (is-external . true)
+     (hook . "treemacs.el"))
+    
+    '((symbol . vterm)
+     (is-external . true)
+     (hook . "vterm.el"))
+    
+    ;; Syntax visuals packages
+    '((symbol . rainbow-identifiers)
+     (is-external . true)
+     (hook . "rainbow-identifiers.el"))
 
+    '((symbol . rust-mode)
+     (is-external . true)
+     (hook . "rust-mode.el"))
+    
     ;;; Internal Modules
     '((symbol . cursor-movement)
      (is-external . false)

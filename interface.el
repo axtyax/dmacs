@@ -7,7 +7,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
-;; Frames
+;; Line numbers
+(global-display-line-numbers-mode t)
+(column-number-mode t)
 
 ;; Windows
 (window-divider-mode)
@@ -15,6 +17,4 @@
 ;; Text Appearance
 (setq tab-width 4)
 (setq frame-resize-pixelwise t)
-(set-face-attribute 'default nil :height 120)
-
-;; Syntax Tools
+(set-face-attribute 'default nil :height 110)
