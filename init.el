@@ -53,11 +53,7 @@
     '((symbol . treemacs)
      (is-external . true)
      (hook . "treemacs.el"))
-    
-    '((symbol . vterm)
-     (is-external . true)
-     (hook . "vterm.el"))
-    
+
     ;; Syntax visuals packages
     '((symbol . rainbow-identifiers)
      (is-external . true)
@@ -75,6 +71,11 @@
     '((symbol . interface)
       (is-external . false)
       (hook . "interface.el"))
+        
+    '((symbol . terminal)
+     (is-external . false)
+     (hook . "terminal.el"))
+
   )
   "A list of alists corresponding to module installations."
 )

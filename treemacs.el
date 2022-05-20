@@ -6,4 +6,4 @@
 (define-key file-prefix-map (kbd "f") 'treemacs-select-window)
 
 ;; Get rid of all buffers
-(define-key file-prefix-map (kbd "k") 'clear-buffer-list)
+(define-key file-prefix-map (kbd "k") 'clean-buffer-list)
