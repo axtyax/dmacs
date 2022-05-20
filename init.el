@@ -85,14 +85,14 @@
 (defun load-tilemacs-modules ()
   (dolist (mod tilemacs-modules)
     (progn
-      (cond ((eq (cdr (assoc 'is-external mod)) 'true)
+      (cond ((eq (gassoc 'is-external mod) 'true)
 	  (progn
 	    (print (gassoc 'symbol mod))
 	    (straight-use-package (gassoc 'symbol mod))
 	    ))
 	)
-      (if (cdr (assoc 'hook mod))
-	  (load (expand-file-name (cdr (assoc 'hook mod)) user-emacs-directory)))
+      (if (gassoc 'hook mod)
+	  (load (expand-file-name (gassoc 'hook mod) user-emacs-directory)))
       (print "Loaded module...")
       (print (gassoc 'symbol mod))
       )
