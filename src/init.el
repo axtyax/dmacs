@@ -53,7 +53,7 @@
     '((symbol . treemacs)
      (is-external . true)
      (hook . "treemacs.el"))
-
+    
     ;; Syntax visuals packages
     '((symbol . rainbow-identifiers)
      (is-external . true)
@@ -62,6 +62,10 @@
     '((symbol . rust-mode)
      (is-external . true)
      (hook . "rust-mode.el"))
+
+     '((symbol . typescript-mode)
+     (is-external . true)
+     (hook . "typescript-mode.el"))
     
     ;;; Internal Modules
     '((symbol . cursor-movement)
