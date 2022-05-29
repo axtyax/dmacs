@@ -66,7 +66,11 @@
      '((symbol . typescript-mode)
      (is-external . true)
      (hook . "typescript-mode.el"))
-    
+
+     '((symbol . rjsx-mode)
+     (is-external . true)
+     (hook . "rjsx-mode.el"))
+     
     ;;; Internal Modules
     '((symbol . cursor-movement)
      (is-external . false)
