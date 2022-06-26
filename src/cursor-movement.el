@@ -30,9 +30,8 @@
 (define-key cursor-prefix-map (kbd "c") 'clipboard-kill-region)
 (define-key cursor-prefix-map (kbd "y") 'clipboard-yank)
 
-
 (define-prefix-command 'window-prefix-map)
-(global-set-key (kbd "M-1") 'window-prefix-map)
+(global-set-key (kbd "C-w") 'window-prefix-map)
 
 ;; Create and remove windows
 (define-key window-prefix-map (kbd "=") 'insert-tiled-window)

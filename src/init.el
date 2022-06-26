@@ -21,6 +21,11 @@
 ;; --- Initialize Tilemacs ---
 (defvar tilemacs-modules
   (list
+   ;;; Evil mode
+    '((symbol . evil)
+     (is-external . true)
+     (hook . "evil.el"))   
+
    ;;; External Modules
     '((symbol . f)
      (is-external . true)
