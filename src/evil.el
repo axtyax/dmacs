@@ -12,7 +12,11 @@
 (evil-global-set-key 'normal (kbd "<leader> q <right>") 'awesome-tab-move-current-tab-to-right)
 
 (evil-global-set-key 'normal (kbd "<leader> b k") 'kill-buffer)
+(evil-global-set-key 'normal (kbd "<leader> b s") 'save-buffer)
 (evil-global-set-key 'normal (kbd "<leader> b f") 'find-file)
+
+(evil-global-set-key 'normal (kbd "<leader> t o") 'treemacs)
+(evil-global-set-key 'normal (kbd "<leader> t d") 'treemacs-select-directory)
 
 (evil-global-set-key 'normal (kbd "<leader> w <left>") 'windmove-left)
 (evil-global-set-key 'normal (kbd "<leader> w <right>") 'windmove-right)
