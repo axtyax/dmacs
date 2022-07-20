@@ -17,4 +17,4 @@
 ;; Text Appearance
 (setq tab-width 4)
 (setq frame-resize-pixelwise t)
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 100)

@@ -2,6 +2,15 @@
 
 (setq evil-default-state 'normal)
 
+(defun kill-all-buffers ()
+  "Kills all buffers."
+  (interactive)
+  (mapc (lambda (buffer)
+	  (progn
+	    (set-buffer buffer)
+	    (kill-buffer buffer))) (buffer-list)))
+
+
 ;; Set the evil leader key to <SPC>
 (evil-set-leader 'normal (kbd "<SPC>") 'nil)
 

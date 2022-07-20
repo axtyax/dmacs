@@ -8,4 +8,10 @@ straight/
 
 *.eld
 
-\#*\#
+**/*\#*
+
+**/session.*
+
+**/.lsp-session*
+
+src/projects
