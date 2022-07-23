@@ -13,6 +13,8 @@ parser.add_argument('--fresh', dest='fresh', default=False, action='store_true',
                     help='Clear all package data before running tilemacs')
 parser.add_argument('--emacs', dest='emacs', metavar='emacs', type=str,
                     help='Location of emacs installation')
+parser.add_argument('--file', dest='filename', metavar='file', type=str,
+                    help='File to open')
 args = parser.parse_args()
 
 
@@ -23,4 +25,4 @@ if args.fresh:
 subprocess.Popen([args.emacs,
 		  '--quick',
 		  '--load',
-                  ('%s/src/init.el') % t_dir])
+                  ('%s') % args.filename])
