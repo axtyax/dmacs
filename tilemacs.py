@@ -10,11 +10,11 @@ t_dir = pathlib.Path(__file__).parent.absolute()
 parser = argparse.ArgumentParser(description='Run emacs using the tilemacs configuration.')
 
 parser.add_argument('--fresh', dest='fresh', default=False, action='store_true',
-                    help='Clear all package data before running tilemacs')
+                    help='Clear all package data before running tilemacs.')
 parser.add_argument('--emacs', dest='emacs', metavar='emacs', type=str,
-                    help='Location of emacs installation')
-parser.add_argument('--file', dest='filename', metavar='file', type=str,
-                    help='File to open')
+                    help='Location of emacs installation.')
+parser.add_argument('--rest', dest='rest', metavar='rest', type=str,
+                    help='Arguments passed to emacs.')
 args = parser.parse_args()
 
 
@@ -25,4 +25,5 @@ if args.fresh:
 subprocess.Popen([args.emacs,
 		  '--quick',
 		  '--load',
-                  ('%s') % args.filename])
+                  ('%s/src/init.el') % t_dir,
+		  args.rest])
