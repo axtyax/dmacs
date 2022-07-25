@@ -54,7 +54,7 @@
    '((symbol . flycheck))
    '((symbol . flycheck-pos-tip))
    '((symbol . treemacs))
-    
+   
     ;; Syntax visuals packages
    '((symbol . rust-mode))
    '((symbol . python-mode))
@@ -114,11 +114,29 @@
 
 ;; Syntax completion and search
 (ivy-mode)
-(ivy-posframe-mode)
+
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+(ivy-posframe-mode 1)
+
+(company-mode)
+(flycheck-mode)
+(which-key-mode)
 
 ;; Configure windows, tabs, and posframes
 
+(defun get-treemacs-buffer ()
+  (interactive)
+  (treemacs-select-window)
+  (window-buffer)
+)
 
+(defun treemacs-posframe-open ()
+  (interactive)
+  (when (posframe-workable-p)
+  (posframe-show " *my-posframe-buffer*"
+                 :string "This is a test"
+                 :position (point)))
+)
 
 ;; Configure syntax highlighting
 

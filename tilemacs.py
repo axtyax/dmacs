@@ -14,6 +14,7 @@ parser.add_argument('--fresh', dest='fresh', default=False, action='store_true',
 parser.add_argument('--emacs', dest='emacs', metavar='emacs', type=str,
                     help='Location of emacs installation.')
 parser.add_argument('--rest', dest='rest', metavar='rest', type=str,
+                    default='.',
                     help='Arguments passed to emacs.')
 args = parser.parse_args()
 
