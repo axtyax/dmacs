@@ -41,16 +41,16 @@
    ;;; External Modules
    '((symbol . evil))
    '((symbol . ivy))
-   '((symbol . counsel))
    '((symbol . ivy-posframe))
+   '((symbol . counsel))
    '((symbol . doom-themes))
+   '((symbol . doom-modeline))
    '((symbol . all-the-icons))
-   '((symbol . f))
    '((symbol . lsp-mode))
    '((symbol . lsp-ui))
    '((symbol . company))
    '((symbol . which-key))
-   '((symbol . awesome-tab))
+;   '((symbol . awesome-tab))
    '((symbol . flycheck))
    '((symbol . flycheck-pos-tip))
    '((symbol . treemacs))
@@ -97,46 +97,58 @@
 ;; Text Appearance
 (setq tab-width 4)
 (setq frame-resize-pixelwise t)
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 100)
 ;; Global settings (defaults)
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
-(load-theme 'doom-dark+ t)
+(load-theme 'doom-tomorrow-night t)
 ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
-;; Enable custom neotree theme (all-the-icons must be installed!)
-(doom-themes-neotree-config)
-;; or for treemacs users
+(all-the-icons-install-fonts)
 (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
 (doom-themes-treemacs-config)
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
+(doom-modeline-mode 1)
 
 ;; Syntax completion and search
-(ivy-mode)
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+(setq ivy-height 32)
+(setq ivy-posframe-min-height 32)
+(setq ivy-posframe-min-width 140)
 
-(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+(ivy-mode)
 (ivy-posframe-mode 1)
 
-(company-mode)
-(flycheck-mode)
+(global-company-mode)
+(global-flycheck-mode)
 (which-key-mode)
+(counsel-mode)
+;(awesome-tab-mode)
 
 ;; Configure windows, tabs, and posframes
 
+;; TODO: See if these is even possible / worth doing 
 (defun get-treemacs-buffer ()
+  (treemacs-select)
+  (let ((treemacs-buffer (window-buffer))
+	(select-window (previous-window))
+	treemacs-buffer)))
+
+(defun print-treemacs-buffer ()
   (interactive)
-  (treemacs-select-window)
-  (window-buffer)
-)
+  (prin1 (get-treemacs-buffer)))
+
 
 (defun treemacs-posframe-open ()
   (interactive)
+
   (when (posframe-workable-p)
-  (posframe-show " *my-posframe-buffer*"
-                 :string "This is a test"
-                 :position (point)))
-)
+  ;(posframe-show " *my-posframe-buffer*"
+  ;               :string "This is a test"
+  ;               :position (point)))
+  (posframe-show (window-buffer)
+                 :position (point))))
 
 ;; Configure syntax highlighting
 
@@ -178,7 +190,6 @@
 
 (evil-global-set-key 'normal (kbd "<leader> b k") 'kill-buffer)
 (evil-global-set-key 'normal (kbd "<leader> b s") 'save-buffer)
-(evil-global-set-key 'normal (kbd "<leader> b f") 'find-file)
 
 (evil-global-set-key 'normal (kbd "<leader> t o") 'treemacs)
 (evil-global-set-key 'normal (kbd "<leader> t d") 'treemacs-select-directory)
@@ -188,6 +199,17 @@
 (evil-global-set-key 'normal (kbd "<leader> w <up>") 'windmove-up)
 (evil-global-set-key 'normal (kbd "<leader> w <down>") 'windmove-down)
 (evil-global-set-key 'normal (kbd "<leader> w k") 'delete-window)
+(evil-global-set-key 'normal (kbd "<leader> w s <right>") 'split-window-right)
+(evil-global-set-key 'normal (kbd "<leader> w s <down>") 'split-window-below)
+(evil-global-set-key 'normal (kbd "<leader> w a") 'ace-window)
+
+(evil-global-set-key 'normal (kbd "<leader> s f") 'counsel-git)
+(evil-global-set-key 'normal (kbd "<leader> s b") 'counsel-switch-buffer)
+(evil-global-set-key 'normal (kbd "<leader> s g") 'counsel-git-grep)
+(evil-global-set-key 'normal (kbd "<leader> s i") 'swiper-isearch)
+(evil-global-set-key 'normal (kbd "<leader> s s") 'swiper)
+
+(evil-global-set-key 'normal (kbd "<leader> e t") 'term)
 
  (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
    backup-by-copying t    ; Don't delink hardlinks
