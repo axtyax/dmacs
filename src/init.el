@@ -25,16 +25,16 @@
 (defun gassoc (key alist) (cdr (assoc key alist)))
 
 (defun load-tilemacs-modules (tilemacs-modules)
- (dolist (mod tilemacs-modules)
-  (progn
-   (print (gassoc 'symbol mod))
-   (straight-use-package (gassoc 'symbol mod))
-   (print "Loaded module...")
-   (print (gassoc 'symbol mod))
+  (dolist (mod tilemacs-modules)
+    (progn
+      (print (gassoc 'symbol mod))
+      (straight-use-package (gassoc 'symbol mod))
+      (print "Loaded module...")
+      (print (gassoc 'symbol mod))
+      )
+    )
+  "Load each module, using straight.el to install it (if necessary)."
   )
- )
- "Load each module, using straight.el to install it (if necessary)."
-)
 
 (defvar dependency-modules
   (list
@@ -50,30 +50,33 @@
    '((symbol . lsp-ui))
    '((symbol . company))
    '((symbol . which-key))
-;   '((symbol . awesome-tab))
+					;   '((symbol . awesome-tab))
    '((symbol . flycheck))
    '((symbol . flycheck-pos-tip))
    '((symbol . treemacs))
-   
-    ;; Syntax visuals packages
+   '((symbol . format-all))
+
+   '((symbol . lsp-java))
+
+   ;; Syntax visuals packages
    '((symbol . rust-mode))
    '((symbol . python-mode))
    '((symbol . typescript-mode))
    '((symbol . rjsx-mode))
-  )
+   )
   "A list of alists corresponding to module installations."
-)
+  )
 
 (load-tilemacs-modules dependency-modules)
 
 ;; Initialize lsp and various language-specific modes
 (defun hook-lsp (hook)
- (add-hook hook #'lsp))
+  (add-hook hook #'lsp))
 
 (defun hook-language-mode-lsp (filename-regex mode-hook mode-callback)
-    (add-to-list 'auto-mode-alist (cons filename-regex mode-callback))
-    (if (not (null mode-hook))
-	(hook-lsp mode-hook)))
+  (add-to-list 'auto-mode-alist (cons filename-regex mode-callback))
+  (if (not (null mode-hook))
+      (hook-lsp mode-hook)))
 
 (hook-language-mode-lsp "\\.el\\'" nil 'emacs-lisp-mode)
 (hook-language-mode-lsp "\\.py\\'" 'python-mode-hook 'python-mode)
@@ -124,11 +127,11 @@
 (global-flycheck-mode)
 (which-key-mode)
 (counsel-mode)
-;(awesome-tab-mode)
+					;(awesome-tab-mode)
 
 ;; Configure windows, tabs, and posframes
 
-;; TODO: See if these is even possible / worth doing 
+;; TODO: See if these is even possible / worth doing
 (defun get-treemacs-buffer ()
   (treemacs-select)
   (let ((treemacs-buffer (window-buffer))
@@ -144,11 +147,11 @@
   (interactive)
 
   (when (posframe-workable-p)
-  ;(posframe-show " *my-posframe-buffer*"
-  ;               :string "This is a test"
-  ;               :position (point)))
-  (posframe-show (window-buffer)
-                 :position (point))))
+					;(posframe-show " *my-posframe-buffer*"
+					;               :string "This is a test"
+					;               :position (point)))
+    (posframe-show (window-buffer)
+                   :position (point))))
 
 ;; Configure syntax highlighting
 
@@ -211,13 +214,13 @@
 
 (evil-global-set-key 'normal (kbd "<leader> e t") 'term)
 
- (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
-   backup-by-copying t    ; Don't delink hardlinks
-   version-control t      ; Use version numbers on backups
-   delete-old-versions t  ; Automatically delete excess backups
-   kept-new-versions 20   ; how many of the newest versions to keep
-   kept-old-versions 5    ; and how many of the old
- )
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+      backup-by-copying t    ; Don't delink hardlinks
+      version-control t      ; Use version numbers on backups
+      delete-old-versions t  ; Automatically delete excess backups
+      kept-new-versions 20   ; how many of the newest versions to keep
+      kept-old-versions 5    ; and how many of the old
+      )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
